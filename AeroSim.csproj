@@ -1,0 +1,113 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Models\airbus_a380.mtl" />
+    <None Remove="Assets\Models\airbus_a380.obj" />
+    <None Remove="Assets\Models\chassis_vlo.0.png" />
+    <None Remove="Assets\Models\chassis_vlo.1.png" />
+    <None Remove="Assets\Models\chassis_vlo.2.png" />
+    <None Remove="Assets\Models\chassis_vlo.4.png" />
+    <None Remove="Assets\Models\chassis_vlo.7.png" />
+    <None Remove="Assets\Models\chassis_vlo.8.png" />
+    <None Remove="Assets\Models\cockpit.0.png" />
+    <None Remove="Assets\Models\cockpit.1.png" />
+    <None Remove="Assets\Models\cockpit.2.png" />
+    <None Remove="Assets\Models\cockpit.3.png" />
+    <None Remove="Assets\Models\elevator_l.0.png" />
+    <None Remove="Assets\Models\elevator_l.1.png" />
+    <None Remove="Assets\Models\interior.0.png" />
+    <None Remove="Assets\Models\interior.1.png" />
+    <None Remove="Assets\Models\low_poly_airplane.obj" />
+    <None Remove="Assets\Models\misc.4.png" />
+    <None Remove="Assets\Models\misc.6.png" />
+    <None Remove="Assets\Models\misci.1.png" />
+    <None Remove="Assets\Models\misci.2.png" />
+    <None Remove="Assets\Models\miscii.0.png" />
+    <None Remove="Assets\Models\wings_vlo.4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Models\airbus_a380.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\airbus_a380.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\chassis_vlo.0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\chassis_vlo.1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\chassis_vlo.2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\chassis_vlo.4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\chassis_vlo.7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\chassis_vlo.8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\cockpit.0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\cockpit.1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\cockpit.2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\cockpit.3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\elevator_l.0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\elevator_l.1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\interior.0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\interior.1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\low_poly_airplane.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\misc.4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\misc.6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\misci.1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\misci.2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\miscii.0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Models\wings_vlo.4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HelixToolkit.Wpf" Version="3.1.2" />
+  </ItemGroup>
+
+</Project>

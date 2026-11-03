@@ -1,0 +1,203 @@
+<Window x:Class="AeroSim.SimulationDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AeroSim | Simulation Data"
+        Width="1120" Height="900" MinWidth="800" MinHeight="620"
+        Background="#17191D" Foreground="#F1F5F9"
+        WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <Style x:Key="MetricCard" TargetType="Border">
+            <Setter Property="Background" Value="#22262C"/>
+            <Setter Property="CornerRadius" Value="9"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="0,0,10,10"/>
+        </Style>
+        <Style x:Key="MetricValue" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="23"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#22D3EE"/>
+            <Setter Property="Margin" Value="0,6,0,0"/>
+        </Style>
+        <Style x:Key="ChartCard" TargetType="Border">
+            <Setter Property="Background" Value="#22262C"/>
+            <Setter Property="CornerRadius" Value="9"/>
+            <Setter Property="Padding" Value="14"/>
+            <Setter Property="Margin" Value="0,0,10,10"/>
+        </Style>
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="22">
+            <DockPanel Margin="0,0,0,16">
+                <Button DockPanel.Dock="Right" Content="Effacer l'historique"
+                        Click="ClearHistory_Click" Padding="14,8"
+                        Background="#343B45" BorderThickness="0"
+                        Foreground="White" Cursor="Hand"/>
+                <StackPanel>
+                    <TextBlock Text="Simulation Data" FontSize="27" FontWeight="Bold"/>
+                    <TextBlock Text="Diagnostics numériques, statistiques particules et mesures du champ"
+                               Foreground="#AAB3C0" FontSize="13" Margin="0,4,0,0"/>
+                </StackPanel>
+            </DockPanel>
+
+            <WrapPanel>
+                <Border Style="{StaticResource MetricCard}" Width="225">
+                    <StackPanel>
+                        <TextBlock Text="Obstacle" Foreground="#AAB3C0"/>
+                        <TextBlock x:Name="ObstacleText" Text="—" Style="{StaticResource MetricValue}" FontSize="17"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource MetricCard}" Width="225">
+                    <StackPanel>
+                        <TextBlock Text="Panneaux" Foreground="#AAB3C0"/>
+                        <TextBlock x:Name="PanelsText" Text="—" Style="{StaticResource MetricValue}"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource MetricCard}" Width="225">
+                    <StackPanel>
+                        <TextBlock Text="Surface maillée (unités²)" Foreground="#AAB3C0"/>
+                        <TextBlock x:Name="AreaText" Text="—" Style="{StaticResource MetricValue}"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource MetricCard}" Width="225">
+                    <StackPanel>
+                        <TextBlock Text="Vent incident" Foreground="#AAB3C0"/>
+                        <TextBlock x:Name="WindText" Text="—" Style="{StaticResource MetricValue}"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource MetricCard}" Width="225">
+                    <StackPanel>
+                        <TextBlock Text="Temps solveur" Foreground="#AAB3C0"/>
+                        <TextBlock x:Name="SolverText" Text="—" Style="{StaticResource MetricValue}"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource MetricCard}" Width="225">
+                    <StackPanel>
+                        <TextBlock Text="Construction du cache" Foreground="#AAB3C0"/>
+                        <TextBlock x:Name="CacheText" Text="—" Style="{StaticResource MetricValue}"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource MetricCard}" Width="225">
+                    <StackPanel>
+                        <TextBlock Text="Résidu collocation RMS" Foreground="#AAB3C0"/>
+                        <TextBlock x:Name="RmsText" Text="—" Style="{StaticResource MetricValue}"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource MetricCard}" Width="225">
+                    <StackPanel>
+                        <TextBlock Text="Résidu collocation max" Foreground="#AAB3C0"/>
+                        <TextBlock x:Name="NormalMaxText" Text="—" Style="{StaticResource MetricValue}"/>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <TextBlock x:Name="StatusText" Foreground="#AAB3C0"
+                       Margin="0,0,0,14" Text="En attente d'une simulation…"/>
+
+            <Border Style="{StaticResource ChartCard}" Margin="0,0,10,12">
+                <StackPanel>
+                    <TextBlock Text="Particle Statistics" FontSize="18" FontWeight="SemiBold"/>
+                    <TextBlock Text="Échantillon mobile de particules (distribution, pas validation du solveur)."
+                               Foreground="#AAB3C0" FontSize="12" Margin="0,2,0,10"/>
+                    <UniformGrid Columns="2">
+                        <Border Style="{StaticResource ChartCard}">
+                            <StackPanel>
+                                <TextBlock Text="Vitesse moyenne locale" FontSize="16" FontWeight="SemiBold"/>
+                                <TextBlock Text="Échantillon de particules, m/s" Foreground="#AAB3C0" FontSize="12"/>
+                                <Canvas x:Name="MeanChart" Height="205" Margin="0,12,0,0"
+                                        SizeChanged="Chart_SizeChanged"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource ChartCard}">
+                            <StackPanel>
+                                <TextBlock Text="Vitesse maximale échantillonnée" FontSize="16" FontWeight="SemiBold"/>
+                                <TextBlock Text="Maximum parmi les points testés, m/s" Foreground="#AAB3C0" FontSize="12"/>
+                                <Canvas x:Name="MaxChart" Height="205" Margin="0,12,0,0"
+                                        SizeChanged="Chart_SizeChanged"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource ChartCard}">
+                            <StackPanel>
+                                <TextBlock Text="Écart au vent incident" FontSize="16" FontWeight="SemiBold"/>
+                                <TextBlock Text="(V moyenne − V∞) / V∞, %" Foreground="#AAB3C0" FontSize="12"/>
+                                <Canvas x:Name="DeviationChart" Height="205" Margin="0,12,0,0"
+                                        SizeChanged="Chart_SizeChanged"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource ChartCard}">
+                            <StackPanel>
+                                <TextBlock Text="Composante verticale moyenne" FontSize="16" FontWeight="SemiBold"/>
+                                <TextBlock Text="Vz moyen de l'échantillon, m/s" Foreground="#AAB3C0" FontSize="12"/>
+                                <Canvas x:Name="VerticalChart" Height="205" Margin="0,12,0,0"
+                                        SizeChanged="Chart_SizeChanged"/>
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+                    <WrapPanel Margin="0,6,0,0">
+                        <Border Style="{StaticResource MetricCard}" Width="330">
+                            <StackPanel>
+                                <TextBlock Text="Recyclages cumulés" Foreground="#AAB3C0"/>
+                                <TextBlock x:Name="RecycleText" Text="—" Foreground="#D1D5DB" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource MetricCard}" Width="330">
+                            <StackPanel>
+                                <TextBlock Text="Intégration particules" Foreground="#AAB3C0"/>
+                                <TextBlock x:Name="SubStepText" Text="—" Foreground="#D1D5DB" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource ChartCard}">
+                <StackPanel>
+                    <TextBlock Text="Flow Field Diagnostics" FontSize="18" FontWeight="SemiBold"/>
+                    <TextBlock Text="Sondes fixes indépendantes des particules. Le champ est stationnaire tant que les paramètres ne changent pas."
+                               Foreground="#AAB3C0" FontSize="12" Margin="0,2,0,10"/>
+                    <WrapPanel>
+                        <Border Style="{StaticResource MetricCard}" Width="330">
+                            <StackPanel>
+                                <TextBlock Text="Domaine cache / particules" Foreground="#AAB3C0"/>
+                                <TextBlock x:Name="DomainText" Text="—" Foreground="#D1D5DB" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource MetricCard}" Width="330">
+                            <StackPanel>
+                                <TextBlock Text="Fiabilité du test intérieur/extérieur" Foreground="#AAB3C0"/>
+                                <TextBlock x:Name="SolidText" Text="—" Foreground="#D1D5DB" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource MetricCard}" Width="330">
+                            <StackPanel>
+                                <TextBlock Text="Particules actuellement dans un solide" Foreground="#AAB3C0"/>
+                                <TextBlock x:Name="InsideText" Text="—" Style="{StaticResource MetricValue}" FontSize="20"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource MetricCard}" Width="330">
+                            <StackPanel>
+                                <TextBlock Text="Erreur cache vs direct (sondes)" Foreground="#AAB3C0"/>
+                                <TextBlock x:Name="ProbeText" Text="—" Foreground="#D1D5DB" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource MetricCard}" Width="330">
+                            <StackPanel>
+                                <TextBlock Text="Stationnarité du champ (direct)" Foreground="#AAB3C0"/>
+                                <TextBlock x:Name="StationaryText" Text="—" Foreground="#D1D5DB" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource MetricCard}" Width="330">
+                            <StackPanel>
+                                <TextBlock Text="Vitesses extrêmes (échantillon de grille)" Foreground="#AAB3C0"/>
+                                <TextBlock x:Name="ExtremeText" Text="—" Foreground="#D1D5DB" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <TextBlock Foreground="#AAB3C0" FontSize="12" TextWrapping="Wrap" Margin="0,10,0,0"
+                       Text="Les résidus de collocation proches de zéro signifient seulement que le système linéaire discrétisé est résolu. Ils ne prouvent pas la validité physique globale du champ. Les diagnostics de sondes séparent l'erreur d'interpolation (cache vs champ direct) des statistiques de population de particules."/>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
