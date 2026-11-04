@@ -58,8 +58,6 @@ namespace AeroSim.Rendering
                     Vector3 a = line.Points[i - 1];
                     Vector3 b = line.Points[i];
 
-                    // On estime la couleur du segment à partir
-                    // de sa vitesse au milieu du segment.
                     Vector3 mid = (a + b) * 0.5f;
 
                     float ratio = 1f;

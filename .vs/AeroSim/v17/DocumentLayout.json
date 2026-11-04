@@ -1,12 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\louis\\OneDrive\\Desktop\\Aerosim\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\louis\\OneDrive\\Bureau\\Aerosim\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DDF009B1-A58B-4B15-9661-1F11223883C2}|AeroSim.csproj|c:\\users\\louis\\onedrive\\bureau\\aerosim\\simulation\\particlesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDF009B1-A58B-4B15-9661-1F11223883C2}|AeroSim.csproj|solutionrelative:simulation\\particlesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDF009B1-A58B-4B15-9661-1F11223883C2}|AeroSim.csproj|c:\\users\\louis\\onedrive\\bureau\\aerosim\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDF009B1-A58B-4B15-9661-1F11223883C2}|AeroSim.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ParticleSystem.cs",
+              "DocumentMoniker": "C:\\Users\\louis\\OneDrive\\Bureau\\Aerosim\\Simulation\\ParticleSystem.cs",
+              "RelativeDocumentMoniker": "Simulation\\ParticleSystem.cs",
+              "ToolTip": "C:\\Users\\louis\\OneDrive\\Bureau\\Aerosim\\Simulation\\ParticleSystem.cs",
+              "RelativeToolTip": "Simulation\\ParticleSystem.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwDIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T12:54:27.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\louis\\OneDrive\\Bureau\\Aerosim\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\louis\\OneDrive\\Bureau\\Aerosim\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAE4BAAAAAAAAAAASwFwBAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T12:54:15.457Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

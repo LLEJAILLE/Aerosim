@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AeroSim")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4382d1e778cfabeb000e66cb48d76b8356793173")]
 [assembly: System.Reflection.AssemblyProductAttribute("AeroSim")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AeroSim")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -56,8 +56,6 @@ namespace AeroSim.Obstacles
                     "L'obstacle ne possède pas de géométrie."
                 );
 
-            // Préparer le maillage avant de remplacer
-            // l'ancien obstacle.
             SurfaceMesh mesh = MeshExtractor.Extract(
                 obstacle.Content,
                 obstacle.Transform.Value
@@ -104,10 +102,8 @@ namespace AeroSim.Obstacles
                     "Impossible de charger le modèle low_poly_airplane."
                 );
 
-            // Taille souhaitée pour la plus grande dimension
             const double targetSize = 50.0;
 
-            // Rotation d'origine
             var rotation = new Transform3DGroup();
 
             rotation.Children.Add(
@@ -119,7 +115,6 @@ namespace AeroSim.Obstacles
                 )
             );
 
-            // Rotation horizontale vers la gauche
             rotation.Children.Add(
                 new RotateTransform3D(
                     new AxisAngleRotation3D(
@@ -129,7 +124,6 @@ namespace AeroSim.Obstacles
                 )
             );
 
-            // Dimensions après rotation
             Rect3D bounds = rotation.TransformBounds(model.Bounds);
 
             double maxDimension = Math.Max(
@@ -146,20 +140,16 @@ namespace AeroSim.Obstacles
                 );
             }
 
-            // Facteur d'échelle automatique
             double scale = targetSize / maxDimension;
 
-            // Centre du modèle après rotation
             double centerX = bounds.X + bounds.SizeX / 2.0;
             double centerY = bounds.Y + bounds.SizeY / 2.0;
             double centerZ = bounds.Z + bounds.SizeZ / 2.0;
 
             var transforms = new Transform3DGroup();
 
-            // 1. Rotation
             transforms.Children.Add(rotation);
 
-            // 2. Redimensionnement
             transforms.Children.Add(
                 new ScaleTransform3D(
                     scale,
@@ -170,7 +160,6 @@ namespace AeroSim.Obstacles
 
             const double airplaneHeight = 10.0;
 
-            // 3. Centrage dans la scène
             transforms.Children.Add(
                 new TranslateTransform3D(
                     -centerX * scale,

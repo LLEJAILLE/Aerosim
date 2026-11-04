@@ -4,19 +4,6 @@ using System.Numerics;
 
 namespace AeroSim.Geometry
 {
-    /// <summary>
-    /// Test intérieur/extérieur d'un maillage triangulé.
-    ///
-    /// Méthode : nombre d'enroulement par lancer de rayons le long des trois axes,
-    /// avec décompte signé des intersections (sortie +1, entrée -1) puis vote à la
-    /// majorité. Le décompte signé reste correct quand des coques fermées se
-    /// recouvrent (une simple parité ne le serait pas). Chaque axe dispose d'une
-    /// grille 2D qui limite chaque requête aux triangles voisins du rayon.
-    ///
-    /// Le test n'est fiable que si le maillage est fermé et orienté vers l'extérieur.
-    /// Sinon <see cref="IsReliable"/> vaut false et Contains retombe sur la boîte
-    /// englobante, estimation volontairement prudente (exclut plus que le solide).
-    /// </summary>
     public sealed class SolidClassifier
     {
         private const int MaxGridResolution = 96;
@@ -35,7 +22,6 @@ namespace AeroSim.Geometry
             public int[][] Cells = Array.Empty<int[]>();
         }
 
-        // Triangle projeté perpendiculairement à un axe, sommets orientés positivement dans le plan projeté.
         private struct ProjectedTriangle
         {
             public double U0, V0, U1, V1, U2, V2;
@@ -80,7 +66,6 @@ namespace AeroSim.Geometry
             }
         }
 
-        /// <summary>Vrai si le point est à l'intérieur d'un solide du maillage.</summary>
         public bool Contains(Vector3 p)
         {
             if (p.X < BoundsMin.X || p.X > BoundsMax.X ||
@@ -102,7 +87,6 @@ namespace AeroSim.Geometry
             return votes >= 2;
         }
 
-        /// <summary>Distance exacte du point au triangle le plus proche (O(N), usage diagnostic).</summary>
         public float DistanceToSurface(Vector3 p)
         {
             float best = float.PositiveInfinity;
@@ -153,7 +137,6 @@ namespace AeroSim.Geometry
             return winding;
         }
 
-        // Règle « haut-gauche » : un point exactement sur une arête partagée n'est compté qu'une fois.
         private static bool CoversPoint(in ProjectedTriangle t, double pu, double pv)
         {
             return EdgeTest(t.U0, t.V0, t.U1, t.V1, pu, pv) &&
@@ -217,7 +200,6 @@ namespace AeroSim.Geometry
                 double normalAxis = VectorAxis.Get(panel.Normal, axis);
                 var t = new ProjectedTriangle();
 
-                // Triangle presque parallèle au rayon : aucune intersection fiable.
                 if (Math.Abs(normalAxis) > 1e-6)
                 {
                     double u0 = VectorAxis.Get(panel.A, axisU), v0 = VectorAxis.Get(panel.A, axisV);
@@ -279,7 +261,6 @@ namespace AeroSim.Geometry
             return Math.Clamp((int)Math.Floor(value), 0, resolution - 1);
         }
 
-        // Maillage fermé (chaque arête orientée a exactement son inverse), orienté vers l'extérieur.
         private bool AnalyzeReliability(out string note)
         {
             Vector3 size = BoundsMax - BoundsMin;
@@ -365,7 +346,6 @@ namespace AeroSim.Geometry
             return true;
         }
 
-        // Point le plus proche sur un triangle (Ericson, Real-Time Collision Detection).
         private static Vector3 ClosestPointOnTriangle(Vector3 p, Vector3 a, Vector3 b, Vector3 c)
         {
             Vector3 ab = b - a;

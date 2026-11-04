@@ -42,8 +42,6 @@ namespace AeroSim.Geometry
         {
             Matrix3D transform = model.Transform.Value;
 
-            // WPF utilise des vecteurs lignes.
-            // On applique d'abord la transformation locale.
             transform.Append(parentTransform);
 
             if (model is Model3DGroup group)

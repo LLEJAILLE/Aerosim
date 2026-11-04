@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroSim", "AeroSim.csproj", "{DDF009B1-A58B-4B15-9661-1F11223883C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDF009B1-A58B-4B15-9661-1F11223883C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDF009B1-A58B-4B15-9661-1F11223883C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDF009B1-A58B-4B15-9661-1F11223883C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDF009B1-A58B-4B15-9661-1F11223883C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FAE8CF0-332D-4DB9-922E-4B7174485806}
+	EndGlobalSection
+EndGlobal

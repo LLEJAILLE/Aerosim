@@ -2,7 +2,6 @@ using System.Numerics;
 
 namespace AeroSim.Geometry
 {
-    // Accès par indice d'axe (0 = X, 1 = Y, 2 = Z) sans dépendre de l'indexeur de Vector3.
     public static class VectorAxis
     {
         public static float Get(Vector3 v, int axis)

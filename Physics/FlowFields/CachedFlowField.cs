@@ -47,7 +47,6 @@ namespace AeroSim.Physics.FlowFields
 
             _velocities = new Vector3[nx, ny, nz];
 
-            // Précalcul du champ stationnaire
             for (int x = 0; x < nx; x++)
                 for (int y = 0; y < ny; y++)
                     for (int z = 0; z < nz; z++)
@@ -86,7 +85,6 @@ namespace AeroSim.Physics.FlowFields
             float ty = Math.Clamp(p.Y - y, 0f, 1f);
             float tz = Math.Clamp(p.Z - z, 0f, 1f);
 
-            // Interpolation sur les huit coins
             Vector3 c000 = _velocities[x, y, z];
             Vector3 c100 = _velocities[x + 1, y, z];
             Vector3 c010 = _velocities[x, y + 1, z];

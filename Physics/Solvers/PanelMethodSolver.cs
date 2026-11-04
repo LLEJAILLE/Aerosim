@@ -52,8 +52,6 @@ namespace AeroSim.Physics.Solvers
             }
 
 
-            // Le solveur actuel modifie matrix et rhs.
-            // On crée des copies pour conserver le système original.
             double[,] matrixCopy = (double[,])matrix.Clone();
             double[] rhsCopy = (double[])rhs.Clone();
 
@@ -108,8 +106,6 @@ namespace AeroSim.Physics.Solvers
         {
             int n = b.Length;
 
-            // Élimination de Gauss avec pivot partiel
-            // Suffisante pour nos petits systèmes de test.
             for (int k = 0; k < n; k++)
             {
                 int pivot = k;

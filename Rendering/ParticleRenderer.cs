@@ -53,7 +53,6 @@ namespace AeroSim.Rendering
             for (int i = 0; i < groups.Length; i++)
                 groups[i] = new Point3DCollection();
 
-            // Évite une division par zéro.
             if (freeStreamSpeed <= 1e-6f)
             {
                 foreach (var particle in particles)
@@ -71,12 +70,10 @@ namespace AeroSim.Rendering
                 {
                     Vector3 position = particle.Position;
 
-                    // Vitesse physique au point de la particule.
                     Vector3 velocity = getVelocity(position);
 
                     float speed = velocity.Length();
 
-                    // Ratio relatif au vent incident.
                     float ratio = speed / freeStreamSpeed;
 
                     int groupIndex = GetColorIndex(ratio);

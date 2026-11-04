@@ -13,11 +13,9 @@ namespace AeroSim.Simulation
 
         public int MaxTrailLength { get; set; } = 10;
 
-        // Temps écoulé depuis la dernière émission et durée de vie autorisée (s).
         public double Age { get; private set; }
         public double MaxAge { get; private set; } = double.PositiveInfinity;
 
-        // Fenêtre de détection des particules bloquées : position de départ et durée écoulée.
         public Vector3 WindowOrigin { get; private set; }
         public double WindowElapsed { get; private set; }
 
@@ -28,12 +26,6 @@ namespace AeroSim.Simulation
             Trail.Enqueue(initialPosition);
         }
 
-        /// <summary>
-        /// Avance la particule par Euler explicite avec sous-pas : le nombre de sous-pas est choisi
-        /// pour que chaque déplacement reste inférieur à <paramref name="maxStepDistance"/>, dans la
-        /// limite de <paramref name="maxSubSteps"/>. La vitesse du champ n'est jamais plafonnée.
-        /// Retourne le nombre de sous-pas effectués.
-        /// </summary>
         public int Update(
             IFlowField flow,
             double deltaTime,
@@ -83,14 +75,12 @@ namespace AeroSim.Simulation
             return subSteps;
         }
 
-        /// <summary>Redémarre la fenêtre de détection de blocage à la position courante.</summary>
         public void RestartWindow()
         {
             WindowOrigin = Position;
             WindowElapsed = 0.0;
         }
 
-        /// <summary>Décale le cycle de vie pour étaler les réémissions dans le temps.</summary>
         public void SetLifecycle(double maxAge, double age, double windowElapsed)
         {
             MaxAge = maxAge;
